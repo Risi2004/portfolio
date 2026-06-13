@@ -1,0 +1,45 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid white;
+    position: sticky;
+    top: 0;
+}
+
+.navbar__section1 a h2 {
+    margin-left: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.navbar__section1 a {
+    text-decoration: none;
+}
+
+
+.navbar__section2 {
+    display: flex;
+    gap: 40px;
+}
+
+.navbar__section2 a {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar__section2 a.active {
+    color: #B3C5FF;
+}
+
+.navbar__section3 button {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #B3C5FF;
+    color: black;
+    font-weight: 600;
+    margin-right: 10px;
+    cursor: pointer;
+}

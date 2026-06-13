@@ -1,9 +1,4 @@
-body {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
+/* Heading Font */
 
 h1,
 h2,
@@ -14,4 +9,29 @@ h5 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
+}
+
+/* Paragraph Font */
+
+body {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Base Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #0F0F0F;
+    color: white;
+}
+
+/* Scroll Behavior */
+
+html {
+  scroll-behavior: smooth;
 }
