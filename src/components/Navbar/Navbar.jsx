@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import menu from "../../assets/icons/menu.svg"
 import './Navbar.css';
 
 function Navbar() {
@@ -61,7 +62,32 @@ function Navbar() {
                 <Link to="/#contact" className={pathname === '/' && activeSection === 'contact' ? 'active' : ''}>Contact</Link>
             </div>
             <div className='navbar__section3'>
-                <button>Resume</button>
+                <a
+                    href="/resume/CV.pdf"
+                    download="Jegatheesan-Risikesan-CV"
+                >
+                    <button>Resume</button>
+                </a>
+            </div>
+            <div className='navbar__section4'>
+                <img src={menu} alt="menu" />
+
+                <div className='navbar__section4_responsive_navbar'>
+                    <Link to="/" className={pathname === '/' && activeSection === 'home' ? 'active' : ''}>Home</Link>
+                    <Link to="/#about" className={pathname === '/' && activeSection === 'about' ? 'active' : ''}>About</Link>
+                    <Link to="/projects" className={pathname === '/projects' || (pathname === '/' && activeSection === 'projects') ? 'active' : ''}>Projects</Link>
+                    <Link to="/#skills" className={pathname === '/' && activeSection === 'skills' ? 'active' : ''}>Skills</Link>
+                    <Link to="/#contact" className={pathname === '/' && activeSection === 'contact' ? 'active' : ''}>Contact</Link>
+                    <div className='navbar__section3'>
+                        <a
+                            href="/resume/CV.pdf"
+                            download="Jegatheesan-Risikesan-CV"
+                        >
+                            <button>Resume</button>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </nav>
     )

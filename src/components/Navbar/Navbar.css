@@ -3,13 +3,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid white;
     position: sticky;
     top: 0;
 }
 
 .navbar__section1 a h2 {
-    margin-left: 10px;
+    padding-left: 20px;
     font-weight: 700;
     cursor: pointer;
 }
@@ -17,7 +16,6 @@
 .navbar__section1 a {
     text-decoration: none;
 }
-
 
 .navbar__section2 {
     display: flex;
@@ -33,13 +31,57 @@
     color: #B3C5FF;
 }
 
-.navbar__section3 button {
+.navbar__section3 {
+    padding-right: 20px;
+}
+
+.navbar__section3 a button {
     padding: 10px;
     border-radius: 10px;
     border: none;
     background-color: #B3C5FF;
     color: black;
     font-weight: 600;
-    margin-right: 10px;
     cursor: pointer;
+}
+
+.navbar__section4 {
+    padding-right: 20px;
+    display: none;
+    position: relative;
+}
+
+.navbar__section4_responsive_navbar{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 120%;
+    right: 0%;
+    padding: 20px;
+    background-color: rgb(81, 78, 78);
+    border-radius: 10px;
+}
+
+.navbar__section4_responsive_navbar a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    background-color: transparent;
+}
+
+@media screen and (max-width:768px) {
+    .navbar__section2 {
+        display: none;
+    }
+
+    .navbar__section3 {
+        display: none;
+    }
+
+    .navbar__section4 {
+        display: block;
+        cursor: pointer;
+    }
+
 }
