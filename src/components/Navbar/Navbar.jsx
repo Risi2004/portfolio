@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import menu from "../../assets/icons/menu.svg"
+import menuIcon from "../../assets/icons/menu.svg"
+import closeIcon from "../../assets/icons/close.svg"
 import './Navbar.css';
 
 function Navbar() {
     const { pathname } = useLocation();
     const [activeSection, setActiveSection] = useState('home');
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         if (pathname !== '/') {
@@ -70,24 +72,26 @@ function Navbar() {
                 </a>
             </div>
             <div className='navbar__section4'>
-                <img src={menu} alt="menu" />
+                <img src={menuIcon} alt="menu" onClick={() => setIsMenuOpen(!isMenuOpen)} />
 
-                <div className='navbar__section4_responsive_navbar'>
-                    <Link to="/" className={pathname === '/' && activeSection === 'home' ? 'active' : ''}>Home</Link>
-                    <Link to="/#about" className={pathname === '/' && activeSection === 'about' ? 'active' : ''}>About</Link>
-                    <Link to="/projects" className={pathname === '/projects' || (pathname === '/' && activeSection === 'projects') ? 'active' : ''}>Projects</Link>
-                    <Link to="/#skills" className={pathname === '/' && activeSection === 'skills' ? 'active' : ''}>Skills</Link>
-                    <Link to="/#contact" className={pathname === '/' && activeSection === 'contact' ? 'active' : ''}>Contact</Link>
-                    <div className='navbar__section3'>
-                        <a
-                            href="/resume/CV.pdf"
-                            download="Jegatheesan-Risikesan-CV"
-                        >
-                            <button>Resume</button>
-                        </a>
+                <div className={`navbar__section4_responsive_navbar ${isMenuOpen ? 'open' : ''}`}>
+                    <img src={closeIcon} alt="close" onClick={() => setIsMenuOpen(false)} />
+                    <div className="navbar__section4_responsive_navbar__links">
+                        <Link to="/" onClick={() => setIsMenuOpen(false)} className={pathname === '/' && activeSection === 'home' ? 'active' : ''}>Home</Link>
+                        <Link to="/#about" onClick={() => setIsMenuOpen(false)} className={pathname === '/' && activeSection === 'about' ? 'active' : ''}>About</Link>
+                        <Link to="/projects" onClick={() => setIsMenuOpen(false)} className={pathname === '/projects' || (pathname === '/' && activeSection === 'projects') ? 'active' : ''}>Projects</Link>
+                        <Link to="/#skills" onClick={() => setIsMenuOpen(false)} className={pathname === '/' && activeSection === 'skills' ? 'active' : ''}>Skills</Link>
+                        <Link to="/#contact" onClick={() => setIsMenuOpen(false)} className={pathname === '/' && activeSection === 'contact' ? 'active' : ''}>Contact</Link>
+                        <div className='navbar__section4_responsive_navbar__button'>
+                            <a
+                                href="/resume/CV.pdf"
+                                download="Jegatheesan-Risikesan-CV"
+                            >
+                                <button>Resume</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </nav>
     )
