@@ -10,12 +10,9 @@ function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
-        if (pathname !== '/') {
-            setActiveSection('projects');
-            return;
-        }
+        if (pathname !== '/') return;
 
-        const sections = ['home', 'about', 'projects', 'skills', 'contact'];
+        const sections = ['home', 'about', 'projects', 'experience', 'skills', 'contact'];
 
         const observerOptions = {
             root: null,
@@ -48,46 +45,78 @@ function Navbar() {
 
     const logo = "</JR>";
 
+    const navLinks = [
+        { to: '/#about', label: 'About', section: 'about', isRoute: false },
+        { to: '/projects', label: 'Projects', section: 'projects', isRoute: true },
+        { to: '/#experience', label: 'Experience', section: 'experience', isRoute: false },
+        { to: '/#skills', label: 'Skills', section: 'skills', isRoute: false },
+        { to: '/#contact', label: 'Contact', section: 'contact', isRoute: false },
+    ];
+
+    const isActive = (section, isRoute) => {
+        if (isRoute) return pathname === '/projects';
+        return pathname === '/' && activeSection === section;
+    };
+
     return (
         <nav className="navbar">
-            <div className="navbar__section1">
+            <div className="navbar__logo">
                 <Link to="/">
                     <h2>{logo}</h2>
                 </Link>
+            </div>
 
+            <div className="navbar__links">
+                {navLinks.map(({ to, label, section, isRoute }) => (
+                    <Link
+                        key={section}
+                        to={to}
+                        className={isActive(section, isRoute) ? 'active' : ''}
+                    >
+                        {label}
+                    </Link>
+                ))}
             </div>
-            <div className='navbar__section2'>
-                <Link to="/" className={pathname === '/' && activeSection === 'home' ? 'active' : ''}>Home</Link>
-                <Link to="/#about" className={pathname === '/' && activeSection === 'about' ? 'active' : ''}>About</Link>
-                <Link to="/projects" className={pathname === '/projects' || (pathname === '/' && activeSection === 'projects') ? 'active' : ''}>Projects</Link>
-                <Link to="/#skills" className={pathname === '/' && activeSection === 'skills' ? 'active' : ''}>Skills</Link>
-                <Link to="/#contact" className={pathname === '/' && activeSection === 'contact' ? 'active' : ''}>Contact</Link>
-            </div>
-            <div className='navbar__section3'>
+
+            <div className="navbar__resume">
                 <a
                     href="/resume/CV.pdf"
                     download="Jegatheesan-Risikesan-CV"
                 >
-                    <button>Resume</button>
+                    <button className="navbar__resume-btn">Resume</button>
                 </a>
             </div>
-            <div className='navbar__section4'>
-                <img src={menuIcon} alt="menu" onClick={() => setIsMenuOpen(!isMenuOpen)} />
 
-                <div className={`navbar__section4_responsive_navbar ${isMenuOpen ? 'open' : ''}`}>
-                    <img src={closeIcon} alt="close" onClick={() => setIsMenuOpen(false)} />
-                    <div className="navbar__section4_responsive_navbar__links">
-                        <Link to="/" onClick={() => setIsMenuOpen(false)} className={pathname === '/' && activeSection === 'home' ? 'active' : ''}>Home</Link>
-                        <Link to="/#about" onClick={() => setIsMenuOpen(false)} className={pathname === '/' && activeSection === 'about' ? 'active' : ''}>About</Link>
-                        <Link to="/projects" onClick={() => setIsMenuOpen(false)} className={pathname === '/projects' || (pathname === '/' && activeSection === 'projects') ? 'active' : ''}>Projects</Link>
-                        <Link to="/#skills" onClick={() => setIsMenuOpen(false)} className={pathname === '/' && activeSection === 'skills' ? 'active' : ''}>Skills</Link>
-                        <Link to="/#contact" onClick={() => setIsMenuOpen(false)} className={pathname === '/' && activeSection === 'contact' ? 'active' : ''}>Contact</Link>
-                        <div className='navbar__section4_responsive_navbar__button'>
+            <div className="navbar__mobile">
+                <img
+                    src={menuIcon}
+                    alt="menu"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                />
+
+                <div className={`navbar__mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+                    <img
+                        src={closeIcon}
+                        alt="close"
+                        onClick={() => setIsMenuOpen(false)}
+                    />
+                    <div className="navbar__mobile-links">
+                        {navLinks.map(({ to, label, section, isRoute }) => (
+                            <Link
+                                key={section}
+                                to={to}
+                                onClick={() => setIsMenuOpen(false)}
+                                className={isActive(section, isRoute) ? 'active' : ''}
+                            >
+                                {label}
+                            </Link>
+                        ))}
+                        <div className="navbar__mobile-resume">
                             <a
                                 href="/resume/CV.pdf"
                                 download="Jegatheesan-Risikesan-CV"
                             >
-                                <button>Resume</button>
+                                <button className="navbar__resume-btn">Resume</button>
                             </a>
                         </div>
                     </div>
@@ -95,7 +124,6 @@ function Navbar() {
             </div>
         </nav>
     )
-
 }
 
 export default Navbar

@@ -1,0 +1,23 @@
+.projects-page {
+  padding-top: clamp(2rem, 5vw, 3.5rem);
+  padding-bottom: var(--section-padding);
+  min-height: calc(100vh - 60px);
+}
+
+.projects-page__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .projects-page__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .projects-page__grid {
+    grid-template-columns: 1fr;
+  }
+}

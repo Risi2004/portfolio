@@ -1,18 +1,22 @@
 import HeroSection from '../../components/HeroSection/HeroSection'
 import About from '../../components/About/About'
 import Projects from '../../components/Projects/Projects'
+import Experience from '../../components/Experience/Experience'
 import Skills from '../../components/Skills/Skills'
 import Contact from '../../components/Contact/Contact'
+import Footer from '../../components/Footer/Footer'
 
 function Home() {
   return (
-    <div>
-        <HeroSection />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
-    </div>
+    <>
+      <HeroSection />
+      <About />
+      <Projects />
+      <Experience />
+      <Skills />
+      <Contact />
+      <Footer />
+    </>
   );
 }
 

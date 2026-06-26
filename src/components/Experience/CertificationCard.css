@@ -1,0 +1,75 @@
+.certification-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.certification-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.certification-card__banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.15rem;
+  min-height: 72px;
+}
+
+.certification-card__credential {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.2rem 0.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.certification-card__body {
+  padding: 1rem 1.15rem;
+  position: relative;
+}
+
+.certification-card__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  line-height: 1.35;
+}
+
+.certification-card__issuer {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.certification-card__level {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+.certification-card__id {
+  display: none;
+}
+
+.certification-card__link-icon {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: var(--text-dim);
+  transition: color var(--transition);
+}
+
+.certification-card:hover .certification-card__link-icon {
+  color: var(--accent-light);
+}
