@@ -1,9 +1,17 @@
 .hero {
+  position: relative;
+  overflow: hidden;
   padding-top: clamp(2rem, 6vw, 4rem);
   padding-bottom: var(--section-padding);
   min-height: 90vh;
   display: flex;
   align-items: center;
+}
+
+.hero__content-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 .hero__grid {

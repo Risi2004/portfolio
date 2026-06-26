@@ -1,13 +1,15 @@
 import { ArrowRight } from 'lucide-react';
 import portrait from '../../assets/images/image.jpg';
 import Button from '../ui/Button/Button';
+import RadialStarfield from '../RadialStarfield/RadialStarfield';
 import StatsBar from './StatsBar';
 import './HeroSection.css';
 
 function HeroSection() {
   return (
     <section id="home" className="hero">
-      <div className="section-container">
+      <RadialStarfield />
+      <div className="section-container hero__content-wrapper">
         <div className="hero__grid">
           <div className="hero__content">
             <p className="hero__eyebrow">I&apos;M JEGATHEESAN RISIKESAN</p>

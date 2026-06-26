@@ -1,14 +1,40 @@
+import { useEffect, useRef, useState } from 'react';
 import { stats } from '../../data/stats';
+import StatItem from './StatItem';
 import './StatsBar.css';
 
 function StatsBar() {
+  const barRef = useRef(null);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const element = barRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="stats-bar">
-      {stats.map(({ value, label }) => (
-        <div key={label} className="stats-bar__item">
-          <span className="stats-bar__value">{value}</span>
-          <span className="stats-bar__label">{label}</span>
-        </div>
+    <div ref={barRef} className="stats-bar">
+      {stats.map(({ target, suffix, label }) => (
+        <StatItem
+          key={label}
+          target={target}
+          suffix={suffix}
+          label={label}
+          started={started}
+        />
       ))}
     </div>
   );

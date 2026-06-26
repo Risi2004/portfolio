@@ -1,6 +1,6 @@
 export const stats = [
-  { value: '10+', label: 'Projects Completed' },
-  { value: '4+', label: 'Years Experience' },
-  { value: '2+', label: 'Open Source Contribs' },
-  { value: '100+', label: 'GitHub Stars' },
+  { target: 10, suffix: '+', label: 'Projects Completed' },
+  { target: 1, suffix: '', label: 'Happy Client' },
+  { target: 4, suffix: '', label: "Consecutive Dean's List" },
+  { target: 2, suffix: '', label: 'Leadership Roles' },
 ];
